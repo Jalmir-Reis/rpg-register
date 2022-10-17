@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class='container mt-3' style='overflow width: 90%; font-size: 14px'> {% csrf_token %}
+    <!--Titulo-->
+    <h6 class='card p-2 bg-secondary text-light text-center mb-3'>Lista de Personagens</h6>
+        <!-- Tabela -->
+        <table class='table table-bordered text-center'>
+            <!-- Titulo -->
+             <thead class='table-secondary'>
+                <tr>
+                 <th style='width: 20%;'>Nome</th>
+                 <th style='width: 12%;'>Classe</th>
+                 <th style='width: 12%;'>Raça</th>
+                 <th style='width: 21%;'>Atributos</th>
+                 <th style='width: 15%;'>Campanha</th>
+                 <th style='width: 10%;'>Nível</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for data in data_read %}
+                <tr>
+                    <td>{{ data.personagem }}</td>
+                    <td>{{ data.classe }}</td>
+                    <td>{{ data.raca }}</td>
+                    <td>{{ data.Atributos }}</td>
+                    <td>{{ data.campanha }}</td>
+                    <td>{{ data.lvl }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href='{% url "home"%}' class='btn btn-outline-primary' role='button' style='width: 90px;'>Registro</a>
+            </div>
+</div>
+<br><br><br>
+{% endblock%}

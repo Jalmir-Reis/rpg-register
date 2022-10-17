@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class='container mt-3' style='overflow width: 90%; font-size: 16px'>
+    <div class='card p-3 border-dark text-center' style='font-size: 20px;'>
+	    Crie seu personagem e venha jogar em uma de nossas mesas!
+    </div>
+    <form method='POST' class='card p-3 mt-3 border-dark' autocomplete='off' novalidate>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-3"> {{ form.jogador|as_crispy_field }} </div>
+            <div class="col-3"> {{ form.telemovel|as_crispy_field }} </div>
+            <div class="col-3"> {{ form.personagem|as_crispy_field }} </div>
+            <div class="col-3"> {{ form.idade|as_crispy_field }} </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3"> {{ form.classe|as_crispy_field }} </div>
+            <div class="col-3"> {{ form.raca|as_crispy_field }} </div>
+            <div class="col-3"> {{ form.disponivel|as_crispy_field }} </div>
+            <div class="col-3"> {{ form.exp_rpg|as_crispy_field }} </div>
+
+        </div>
+
+            {{ form.bg|as_crispy_field }}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-outline-primary" style="width: 90px;">Registrar</button>
+            <a href='{% url "lista"%}' class='btn btn-outline-info' role='button' style='width: 90px;'>Ver Lista</a>
+        </div>
+    </form>
+
+    <!-- Mensagem do Backend -->
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class='alert alert-primary alert-dismissible fade show' role='alert'>{{message}}
+                <a href='{% url "home" %}' type='button' class='btn btn-close' data-bs-dismiss='alert' aria-label='Close'></a>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+</div>
+<br><br><br>
+{% endblock %}
