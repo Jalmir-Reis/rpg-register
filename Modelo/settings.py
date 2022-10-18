@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-rha^k4-2&c1*$9-av@pv4l402f*f5_nfl8a^ww=fgkqni(@va+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'cadastro-rpg.render.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://cadastro-rpg.onrender.com']
 
 
 # Application definition
